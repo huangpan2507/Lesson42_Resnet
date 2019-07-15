@@ -26,6 +26,7 @@ class ResBlk(nn.Module):
         self.bn2 = nn.BatchNorm2d(ch_out)
 
         self.extra = nn.Sequential()
+        # 若不是self.blk4 = ResBlk(512, 512, stride=2)中ch_in=ch_out，下面还会继续
         if ch_out != ch_in:
             # [b, ch_in, h w] ===>[b, ch_out, h, w]
             self.extra = nn.Sequential(
